@@ -7,8 +7,8 @@ async function PersonDetails({ params }: { params: { id: string } }) {
   const { id } = params;
   const person = await PeopleService.getPerson(id);
 
-  if (!person) {
-    return redirect("/persons");
+  if (!person || person.detail === "Not found") {
+    return redirect("/people");
   }
 
   return <PersonDetailsContainer person={person} />;
